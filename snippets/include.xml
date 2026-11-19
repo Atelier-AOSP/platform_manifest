@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="atelier"
+           fetch="https://github.com/Atelier-AOSP"
+           revision="cp2a" />
+
+  <remote  name="github"
+           fetch=".."
+           revision="refs/heads/lineage-24.0"
+           review="review.lineageos.org" />
+
+  <project path="build/make" name="platform_build" groups="pdk,sysui-studio" remote="atelier">
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="platform_build_soong" groups="pdk,tradefed,sysui-studio" remote="atelier">
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="bootable/recovery" name="platform_bootable_recovery" groups="pdk" remote="atelier" />
+  <project path="device/google/pantah" name="device_google_pantah" remote="atelier" />
+  <project path="device/google/gs201" name="device_google_gs201" remote="atelier" />
+  <project path="external/json-c" name="platform_external_json-c" remote="atelier" />
+  <project path="hardware/google/pixel" name="platform_hardware_google_pixel" remote="atelier" />
+  <project path="hardware/google/pixel-sepolicy" name="platform_hardware_google_pixel-sepolicy" remote="atelier" />
+  <project path="vendor/custom" name="platform_vendor_custom" remote="atelier" />
+  <project path="vendor/kernelsu" name="platform_vendor_kernelsu" remote="atelier" revision="main" />
+  <project path="vendor/google/gms" name="vendor_google_gms" remote="atelier" />
+  <project path="vendor/google/gms_mainline" name="vendor_google_gms_mainline" remote="atelier" />
+  <project path="vendor/unbundled_google/packages/SystemUIGoogle/clocks" name="vendor_unbundled_google_packages_SystemUIGoogle_clocks" remote="atelier" />
+
+  <project path="lineage/scripts" name="LineageOS/scripts" groups="tools" remote="github" revision="main" />
+  <project path="tools/extract-utils" name="LineageOS/android_tools_extract-utils" remote="github" />
+  <project path="prebuilts/extract-tools" name="LineageOS/android_prebuilts_extract-tools" clone-depth="1" remote="github" />
+</manifest>
